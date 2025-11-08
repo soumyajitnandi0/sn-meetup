@@ -15,15 +15,15 @@ export default function ProjectCard({ project }) {
 
   return (
     <Link href={`/projects/${project._id}`}>
-      <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6 hover:shadow-md hover:border-blue-300 transition-all cursor-pointer">
+      <div className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-md border border-gray-200 p-10 hover:shadow-xl hover:border-blue-300 hover:scale-[1.02] transition-all cursor-pointer">
         {/* Header */}
-        <div className="flex items-start justify-between mb-3">
+        <div className="flex items-start justify-between mb-6">
           <div className="flex-1">
-            <h3 className="text-lg font-semibold text-gray-900 mb-1">
+            <h3 className="text-2xl font-bold text-gray-900 mb-3">
               {project.name}
             </h3>
             {project.description && (
-              <p className="text-sm text-gray-600 line-clamp-2">
+              <p className="text-lg text-gray-600 line-clamp-2 leading-relaxed">
                 {project.description}
               </p>
             )}
@@ -31,38 +31,38 @@ export default function ProjectCard({ project }) {
         </div>
 
         {/* Footer */}
-        <div className="flex items-center justify-between mt-4 pt-4 border-t border-gray-100">
+        <div className="flex items-center justify-between mt-6 pt-6 border-t border-gray-100">
           {/* Status Badge */}
-          <div className={`flex items-center gap-1.5 px-2.5 py-1 rounded-full ${config.color}`}>
-            <StatusIcon className="w-4 h-4" />
-            <span className="text-xs font-medium">{config.label}</span>
+          <div className={`flex items-center gap-2.5 px-4 py-2 rounded-full ${config.color}`}>
+            <StatusIcon className="w-6 h-6" />
+            <span className="text-base font-semibold">{config.label}</span>
           </div>
 
           {/* Members Count */}
-          <div className="flex items-center gap-1.5 text-gray-500">
-            <UsersIcon className="w-4 h-4" />
-            <span className="text-sm">
+          <div className="flex items-center gap-2.5 text-gray-500">
+            <UsersIcon className="w-6 h-6" />
+            <span className="text-lg font-semibold">
               {(project.members?.length || 0) + 1} {/* +1 for owner */}
             </span>
           </div>
         </div>
 
         {/* Owner Info */}
-        <div className="mt-3 flex items-center gap-2 text-xs text-gray-500">
-          <span>Owner:</span>
-          <div className="flex items-center gap-1.5">
+        <div className="mt-5 flex items-center gap-3 text-base text-gray-500">
+          <span className="font-medium">Owner:</span>
+          <div className="flex items-center gap-2.5">
             {project.owner?.avatar ? (
               <img
                 src={project.owner.avatar}
                 alt={project.owner.name}
-                className="w-5 h-5 rounded-full"
+                className="w-8 h-8 rounded-full"
               />
             ) : (
-              <div className="w-5 h-5 rounded-full bg-blue-500 flex items-center justify-center text-white text-xs">
+              <div className="w-8 h-8 rounded-full bg-blue-500 flex items-center justify-center text-white text-sm font-semibold">
                 {project.owner?.name?.charAt(0).toUpperCase()}
               </div>
             )}
-            <span className="font-medium text-gray-700">{project.owner?.name}</span>
+            <span className="font-semibold text-gray-700">{project.owner?.name}</span>
           </div>
         </div>
       </div>

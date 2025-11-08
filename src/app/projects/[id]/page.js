@@ -75,7 +75,7 @@ export default function ProjectDetailPage({ params }) {
 
   if (projectLoading || tasksLoading) {
     return (
-      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
+      <div className="min-h-screen flex items-center justify-center">
         <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600"></div>
       </div>
     );
@@ -83,8 +83,8 @@ export default function ProjectDetailPage({ params }) {
 
   if (projectError || tasksError) {
     return (
-      <div className="min-h-screen bg-gray-50 flex items-center justify-center p-4">
-        <div className="bg-red-50 border border-red-200 rounded-lg p-6 max-w-md">
+      <div className="min-h-screen flex items-center justify-center p-4">
+        <div className="bg-red-50/90 backdrop-blur-sm border border-red-200 rounded-lg p-6 max-w-md">
           <p className="font-medium text-red-700">Error loading project</p>
           <p className="text-sm text-red-600 mt-1">
             {projectError?.message || tasksError?.message}
@@ -108,7 +108,7 @@ export default function ProjectDetailPage({ params }) {
 
   return (
     <ProtectedRoute>
-      <div className="min-h-screen bg-gray-50">
+      <div className="min-h-screen">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         {/* Header */}
         <div className="mb-6">
@@ -176,7 +176,7 @@ export default function ProjectDetailPage({ params }) {
         )}
 
         {/* Kanban Board */}
-        <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
+        <div className="bg-white/80 backdrop-blur-sm rounded-lg shadow-sm border border-gray-200 p-6">
           <KanbanBoard
             projectId={projectId}
             tasks={tasks || []}
@@ -188,7 +188,7 @@ export default function ProjectDetailPage({ params }) {
       {/* Task Form Modal */}
       {(showTaskForm || editingTask) && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
-          <div className="bg-white rounded-lg max-w-2xl w-full max-h-[90vh] overflow-y-auto">
+          <div className="bg-white/95 backdrop-blur-sm rounded-lg max-w-2xl w-full max-h-[90vh] overflow-y-auto">
             <TaskForm
               task={editingTask}
               projectId={projectId}
@@ -215,7 +215,7 @@ export default function ProjectDetailPage({ params }) {
       {/* Project Edit Modal */}
       {showProjectEdit && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
-          <div className="bg-white rounded-lg max-w-2xl w-full max-h-[90vh] overflow-y-auto">
+          <div className="bg-white/95 backdrop-blur-sm rounded-lg max-w-2xl w-full max-h-[90vh] overflow-y-auto">
             <ProjectForm
               project={project}
               onSubmit={handleUpdateProject}

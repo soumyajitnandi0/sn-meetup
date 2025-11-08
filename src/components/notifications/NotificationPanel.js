@@ -1,6 +1,7 @@
 'use client';
 
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useCallback } from 'react';
+import { createPortal } from 'react-dom';
 import { useNotifications, useUnreadCount, useMarkAsRead } from '@/hooks/useNotifications';
 import { useSocketEvent } from '@/hooks/useSocketEvent';
 import { useQueryClient } from '@tanstack/react-query';
@@ -45,23 +46,24 @@ export default function NotificationPanel({ isOpen, onClose }) {
 
   if (!isOpen) return null;
 
-  return (
+  const panelContent = (
     <>
       {/* Overlay - very light backdrop, only on mobile */}
       <div
-        className="fixed inset-0 bg-black/5 md:bg-transparent z-40 transition-colors"
+        className="fixed inset-0 bg-black/20 md:bg-transparent transition-colors"
+        style={{ zIndex: 9998 }}
         onClick={onClose}
         aria-hidden="true"
       />
 
       {/* Panel - right sidebar, fixed width */}
       <div 
-        className="fixed top-0 right-0 h-full w-96 max-w-[90vw] bg-white shadow-2xl z-50 flex flex-col"
+        className="fixed top-0 right-0 h-full w-96 max-w-[90vw] bg-white/95 backdrop-blur-md shadow-2xl flex flex-col"
+        style={{ zIndex: 9999 }}
         onClick={(e) => e.stopPropagation()}
         role="dialog"
         aria-modal="true"
         aria-label="Notifications"
-        style={{ transform: 'translateX(0)' }}
       >
         {/* Header */}
         <div className="flex items-center justify-between p-4 border-b border-gray-200">
@@ -153,4 +155,9 @@ export default function NotificationPanel({ isOpen, onClose }) {
       </div>
     </>
   );
+
+  // Use portal to render at body level, bypassing z-index stacking context
+  return typeof document !== 'undefined' 
+    ? createPortal(panelContent, document.body)
+    : null;
 }

@@ -79,7 +79,7 @@ export default function AutomationList({ projectId }) {
           {automations.map(automation => (
             <div
               key={automation._id}
-              className={`bg-white rounded-lg border p-4 transition-all ${
+              className={`bg-white/80 backdrop-blur-sm rounded-lg border p-4 transition-all ${
                 automation.enabled
                   ? 'border-gray-200 hover:border-blue-300 hover:shadow-sm'
                   : 'border-gray-200 bg-gray-50 opacity-60'
@@ -166,7 +166,7 @@ export default function AutomationList({ projectId }) {
       {/* Create/Edit Modal */}
       {(showCreateForm || editingAutomation) && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
-          <div className="bg-white rounded-lg max-w-3xl w-full max-h-[90vh] overflow-y-auto">
+          <div className="bg-white/95 backdrop-blur-sm rounded-lg max-w-3xl w-full max-h-[90vh] overflow-y-auto">
             <AutomationForm
               projectId={projectId}
               automation={editingAutomation}

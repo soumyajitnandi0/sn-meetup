@@ -27,7 +27,7 @@ export default function TaskCard({ task, onEdit, onDelete }) {
   const isOverdue = task.dueDate && new Date(task.dueDate) < new Date() && task.status !== 'done';
 
   return (
-    <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-4 hover:shadow-md transition-shadow">
+    <div className="bg-white/80 backdrop-blur-sm rounded-lg shadow-sm border border-gray-200 p-4 hover:shadow-md transition-shadow">
       {/* Header */}
       <div className="flex items-start justify-between mb-2">
         <h3 className="font-medium text-gray-900 flex-1 line-clamp-2">

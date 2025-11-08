@@ -178,7 +178,7 @@ export default function KanbanBoard({ projectId, tasks, onTaskEdit }) {
 
       {/* Filter Options */}
       {showFilters && (
-        <div className="mb-4 p-4 bg-white rounded-lg border border-gray-200 space-y-3">
+        <div className="mb-4 p-4 bg-white/80 backdrop-blur-sm rounded-lg border border-gray-200 space-y-3">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             {/* Assignee Filter */}
             <div>

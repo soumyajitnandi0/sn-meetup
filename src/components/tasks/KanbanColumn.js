@@ -14,9 +14,9 @@ export default function KanbanColumn({ status, tasks, onEditTask, onDeleteTask }
   const config = statusConfig[status] || { label: status, color: 'bg-gray-100' };
 
   return (
-    <div className="flex flex-col h-full min-w-[300px] bg-gray-50 rounded-lg">
+    <div className="flex flex-col h-full min-w-[300px] bg-white/60 backdrop-blur-sm rounded-lg">
       {/* Column Header */}
-      <div className={`${config.color} px-4 py-3 rounded-t-lg border-b border-gray-200`}>
+      <div className={`${config.color} bg-opacity-60 backdrop-blur-sm px-4 py-3 rounded-t-lg border-b border-gray-200`}>
         <div className="flex items-center justify-between">
           <h3 className="font-semibold text-gray-900">{config.label}</h3>
           <span className="bg-white px-2 py-0.5 rounded-full text-xs font-medium text-gray-600">

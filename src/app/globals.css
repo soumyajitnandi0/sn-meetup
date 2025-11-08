@@ -24,3 +24,13 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+/* Ensure body content is always visible, even with overlays */
+body:has([role="dialog"]) {
+  overflow: hidden;
+}
+
+/* Prevent black screen when modal/overlay is open */
+[role="dialog"] {
+  isolation: isolate;
+}

@@ -50,14 +50,14 @@ export default function ProjectForm({ project, onSubmit, onCancel }) {
       <div className="space-y-4">
         {/* Project Name */}
         <div>
-          <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">
+          <label htmlFor="name" className="block text-sm font-medium text-gray-900 mb-2">
             Project Name *
           </label>
           <input
             id="name"
             type="text"
             {...register('name')}
-            className={`w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent ${
+            className={`w-full px-4 py-3 bg-white border-2 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-gray-900 font-medium ${
               errors.name ? 'border-red-300' : 'border-gray-300'
             }`}
             placeholder="Enter project name"
@@ -69,14 +69,14 @@ export default function ProjectForm({ project, onSubmit, onCancel }) {
 
         {/* Description */}
         <div>
-          <label htmlFor="description" className="block text-sm font-medium text-gray-700 mb-1">
+          <label htmlFor="description" className="block text-sm font-medium text-gray-900 mb-2">
             Description
           </label>
           <textarea
             id="description"
             {...register('description')}
             rows={4}
-            className={`w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent ${
+            className={`w-full px-4 py-3 bg-white border-2 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-gray-900 font-medium placeholder-gray-400 ${
               errors.description ? 'border-red-300' : 'border-gray-300'
             }`}
             placeholder="Enter project description"
@@ -88,13 +88,13 @@ export default function ProjectForm({ project, onSubmit, onCancel }) {
 
         {/* Status */}
         <div>
-          <label htmlFor="status" className="block text-sm font-medium text-gray-700 mb-1">
+          <label htmlFor="status" className="block text-sm font-medium text-gray-900 mb-2">
             Status *
           </label>
           <select
             id="status"
             {...register('status')}
-            className={`w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent ${
+            className={`w-full px-4 py-3 bg-white border-2 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-gray-900 font-medium ${
               errors.status ? 'border-red-300' : 'border-gray-300'
             }`}
           >

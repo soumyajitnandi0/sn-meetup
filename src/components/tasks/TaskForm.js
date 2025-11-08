@@ -62,14 +62,14 @@ export default function TaskForm({ task, projectId, projectMembers = [], onSubmi
       <div className="space-y-4">
         {/* Task Title */}
         <div>
-          <label htmlFor="title" className="block text-sm font-medium text-gray-700 mb-1">
+          <label htmlFor="title" className="block text-sm font-medium text-gray-900 mb-2">
             Task Title *
           </label>
           <input
             id="title"
             type="text"
             {...register('title')}
-            className={`w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent ${
+            className={`w-full px-4 py-3 bg-white border-2 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-gray-900 font-medium ${
               errors.title ? 'border-red-300' : 'border-gray-300'
             }`}
             placeholder="Enter task title"
@@ -81,14 +81,14 @@ export default function TaskForm({ task, projectId, projectMembers = [], onSubmi
 
         {/* Description */}
         <div>
-          <label htmlFor="description" className="block text-sm font-medium text-gray-700 mb-1">
+          <label htmlFor="description" className="block text-sm font-medium text-gray-900 mb-2">
             Description
           </label>
           <textarea
             id="description"
             {...register('description')}
             rows={4}
-            className={`w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent ${
+            className={`w-full px-4 py-3 bg-white border-2 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-gray-900 font-medium placeholder-gray-400 ${
               errors.description ? 'border-red-300' : 'border-gray-300'
             }`}
             placeholder="Enter task description"
@@ -102,13 +102,13 @@ export default function TaskForm({ task, projectId, projectMembers = [], onSubmi
         <div className="grid grid-cols-2 gap-4">
           {/* Status */}
           <div>
-            <label htmlFor="status" className="block text-sm font-medium text-gray-700 mb-1">
+            <label htmlFor="status" className="block text-sm font-medium text-gray-900 mb-2">
               Status *
             </label>
             <select
               id="status"
               {...register('status')}
-              className={`w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent ${
+              className={`w-full px-4 py-3 bg-white border-2 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-gray-900 font-medium ${
                 errors.status ? 'border-red-300' : 'border-gray-300'
               }`}
             >
@@ -124,13 +124,13 @@ export default function TaskForm({ task, projectId, projectMembers = [], onSubmi
 
           {/* Priority */}
           <div>
-            <label htmlFor="priority" className="block text-sm font-medium text-gray-700 mb-1">
+            <label htmlFor="priority" className="block text-sm font-medium text-gray-900 mb-2">
               Priority *
             </label>
             <select
               id="priority"
               {...register('priority')}
-              className={`w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent ${
+              className={`w-full px-4 py-3 bg-white border-2 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-gray-900 font-medium ${
                 errors.priority ? 'border-red-300' : 'border-gray-300'
               }`}
             >
@@ -149,13 +149,13 @@ export default function TaskForm({ task, projectId, projectMembers = [], onSubmi
         <div className="grid grid-cols-2 gap-4">
           {/* Assignee */}
           <div>
-            <label htmlFor="assignee" className="block text-sm font-medium text-gray-700 mb-1">
+            <label htmlFor="assignee" className="block text-sm font-medium text-gray-900 mb-2">
               Assignee
             </label>
             <select
               id="assignee"
               {...register('assignee')}
-              className={`w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent ${
+              className={`w-full px-4 py-3 bg-white border-2 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-gray-900 font-medium ${
                 errors.assignee ? 'border-red-300' : 'border-gray-300'
               }`}
             >
@@ -173,14 +173,14 @@ export default function TaskForm({ task, projectId, projectMembers = [], onSubmi
 
           {/* Due Date */}
           <div>
-            <label htmlFor="dueDate" className="block text-sm font-medium text-gray-700 mb-1">
+            <label htmlFor="dueDate" className="block text-sm font-medium text-gray-900 mb-2">
               Due Date
             </label>
             <input
               id="dueDate"
               type="date"
               {...register('dueDate')}
-              className={`w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent ${
+              className={`w-full px-4 py-3 bg-white border-2 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-gray-900 font-medium ${
                 errors.dueDate ? 'border-red-300' : 'border-gray-300'
               }`}
             />

@@ -94,14 +94,14 @@ export default function AutomationForm({ projectId, automation, onCancel }) {
         {/* Name and Enabled */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           <div className="md:col-span-2">
-            <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">
+            <label htmlFor="name" className="block text-sm font-medium text-gray-900 mb-2">
               Automation Name *
             </label>
             <input
               id="name"
               type="text"
               {...register('name')}
-              className={`w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent ${
+              className={`w-full px-4 py-3 bg-white border-2 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-gray-900 font-medium ${
                 errors.name ? 'border-red-300' : 'border-gray-300'
               }`}
               placeholder="e.g., Notify on high priority tasks"
@@ -116,26 +116,26 @@ export default function AutomationForm({ projectId, automation, onCancel }) {
               <input
                 type="checkbox"
                 {...register('enabled')}
-                className="w-4 h-4 text-blue-600 border-gray-300 rounded focus:ring-blue-500"
+                className="w-5 h-5 text-blue-600 border-gray-300 rounded focus:ring-blue-500"
               />
-              <span className="text-sm font-medium text-gray-700">Enabled</span>
+              <span className="text-sm font-semibold text-gray-900">Enabled</span>
             </label>
           </div>
         </div>
 
         {/* Trigger Section */}
-        <div className="border border-gray-200 rounded-lg p-4 bg-gray-50">
+        <div className="border-2 border-gray-200 rounded-lg p-6 bg-gray-50/50">
           <h3 className="text-lg font-semibold text-gray-900 mb-4">When (Trigger)</h3>
           
           <div className="space-y-4">
             <div>
-              <label htmlFor="trigger.type" className="block text-sm font-medium text-gray-700 mb-1">
+              <label htmlFor="trigger.type" className="block text-sm font-medium text-gray-900 mb-2">
                 Trigger Type *
               </label>
               <select
                 id="trigger.type"
                 {...register('trigger.type')}
-                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                className="w-full px-4 py-3 bg-white border-2 border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-gray-900 font-medium"
               >
                 <option value="status_change">Status Change</option>
                 <option value="assignment">Task Assignment</option>
@@ -144,18 +144,18 @@ export default function AutomationForm({ projectId, automation, onCancel }) {
             </div>
 
             {/* Optional Condition */}
-            <div className="bg-white border border-gray-200 rounded-lg p-3">
-              <p className="text-sm font-medium text-gray-700 mb-2">Optional Condition</p>
-              <div className="grid grid-cols-3 gap-2">
+            <div className="bg-white border-2 border-gray-200 rounded-lg p-4">
+              <p className="text-sm font-semibold text-gray-900 mb-3">Optional Condition</p>
+              <div className="grid grid-cols-3 gap-3">
                 <input
                   type="text"
                   {...register('trigger.condition.field')}
                   placeholder="Field"
-                  className="px-3 py-2 border border-gray-300 rounded-lg text-sm focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                  className="px-3 py-2 bg-white border-2 border-gray-300 rounded-lg text-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-gray-900 font-medium placeholder-gray-400"
                 />
                 <select
                   {...register('trigger.condition.operator')}
-                  className="px-3 py-2 border border-gray-300 rounded-lg text-sm focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                  className="px-3 py-2 bg-white border-2 border-gray-300 rounded-lg text-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-gray-900 font-medium"
                 >
                   <option value="equals">Equals</option>
                   <option value="not_equals">Not Equals</option>
@@ -165,7 +165,7 @@ export default function AutomationForm({ projectId, automation, onCancel }) {
                   type="text"
                   {...register('trigger.condition.value')}
                   placeholder="Value"
-                  className="px-3 py-2 border border-gray-300 rounded-lg text-sm focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                  className="px-3 py-2 bg-white border-2 border-gray-300 rounded-lg text-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-gray-900 font-medium placeholder-gray-400"
                 />
               </div>
             </div>
@@ -173,34 +173,34 @@ export default function AutomationForm({ projectId, automation, onCancel }) {
         </div>
 
         {/* Actions Section */}
-        <div className="border border-gray-200 rounded-lg p-4 bg-gray-50">
+        <div className="border-2 border-gray-200 rounded-lg p-6 bg-gray-50/50">
           <div className="flex items-center justify-between mb-4">
             <h3 className="text-lg font-semibold text-gray-900">Then (Actions)</h3>
             <button
               type="button"
               onClick={() => append({ type: 'send_notification', params: {} })}
-              className="flex items-center gap-1 text-sm text-blue-600 hover:text-blue-700"
+              className="flex items-center gap-1 text-sm font-medium text-blue-600 hover:text-blue-700"
             >
-              <PlusIcon className="w-4 h-4" />
+              <PlusIcon className="w-5 h-5" />
               <span>Add Action</span>
             </button>
           </div>
 
           <div className="space-y-3">
             {fields.map((field, index) => (
-              <div key={field.id} className="bg-white border border-gray-200 rounded-lg p-3">
+              <div key={field.id} className="bg-white border-2 border-gray-200 rounded-lg p-4">
                 <div className="flex items-start gap-3">
                   <div className="flex-1">
                     <select
                       {...register(`actions.${index}.type`)}
-                      className="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm focus:ring-2 focus:ring-blue-500 focus:border-transparent mb-2"
+                      className="w-full px-4 py-3 bg-white border-2 border-gray-300 rounded-lg text-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-gray-900 font-medium mb-2"
                     >
                       <option value="update_status">Update Status</option>
                       <option value="assign_user">Assign User</option>
                       <option value="send_notification">Send Notification</option>
                     </select>
                     
-                    <div className="text-xs text-gray-500">
+                    <div className="text-xs text-gray-600 font-medium">
                       Action parameters can be configured after creation
                     </div>
                   </div>
@@ -211,7 +211,7 @@ export default function AutomationForm({ projectId, automation, onCancel }) {
                       onClick={() => remove(index)}
                       className="p-2 text-gray-400 hover:text-red-600 transition-colors"
                     >
-                      <TrashIcon className="w-4 h-4" />
+                      <TrashIcon className="w-5 h-5" />
                     </button>
                   )}
                 </div>

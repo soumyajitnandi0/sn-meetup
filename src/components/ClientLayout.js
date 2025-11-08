@@ -1,9 +1,22 @@
 'use client';
 
+import { useState, useEffect } from 'react';
+import { usePathname } from 'next/navigation';
 import Iridescence from './Iridescence';
-import ConditionalHeader from './ConditionalHeader';
+import Sidebar from './Sidebar';
 
 export default function ClientLayout({ children }) {
+  const pathname = usePathname();
+  const [mounted, setMounted] = useState(false);
+  
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+  
+  // Don't show sidebar on login/register pages
+  const isAuthPage = pathname?.startsWith('/login') || pathname?.startsWith('/register');
+  const showSidebar = mounted && !isAuthPage;
+
   return (
     <>
       {/* Global Animated Background */}
@@ -16,10 +29,10 @@ export default function ClientLayout({ children }) {
         />
       </div>
       
-      {/* Content */}
-      <div className="relative z-10 min-h-screen flex flex-col">
-        <ConditionalHeader />
-        <main className="flex-1">
+      {/* Layout with Sidebar */}
+      <div className="relative z-10 min-h-screen flex">
+        {showSidebar && <Sidebar />}
+        <main className={`flex-1 ${showSidebar ? 'ml-64' : ''}`}>
           {children}
         </main>
       </div>
